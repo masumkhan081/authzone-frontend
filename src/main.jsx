@@ -3,9 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { routes } from "./routes/routes.jsx";
 import { RouterProvider } from "react-router-dom";
-
+import { AuthProvider } from "./context/authContext.jsx";
+// 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={routes} />
+  <React.StrictMode>
+    <AuthProvider>
+      <RouterProvider router={routes} />
+    </AuthProvider>
+  </React.StrictMode>
 );
-
 // axios wrapper, login page, otp page, pass-rest page, new-pass page, footer, about-project page formik & validation,

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Title from "../sharedUI/Title";
 import { HiMiniQueueList } from "react-icons/hi2";
 import { FaBookReader, FaHandPointRight } from "react-icons/fa";
 import { FaRightLong } from "react-icons/fa6";
+import { authContext } from "../context/authContext";
 
 export default function About() {
   const libs = [
@@ -14,6 +15,8 @@ export default function About() {
     "custom hook",
   ];
 
+  const { count, increase } = useContext(authContext);
+
   return (
     <div className="md:px-2.0 px-1.0 grid grid-cols-3 gap-4">
       <div className=" col-span-1 flex flex-col gap-4 justify-start items-start md:px-4 px-2">
@@ -22,6 +25,9 @@ export default function About() {
           style="neutral_title "
           icon={<HiMiniQueueList className="mr-2" />}
         />
+
+        <p>{count}</p>
+        <button onClick={() => increase()} className="font-bold text-2xl">+</button>
 
         <ul className="space-y-3 w-full">
           {libs.map((item, ind) => {
